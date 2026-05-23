@@ -47,55 +47,6 @@
     ]
   },
   "gallery": [
-    {
-      "title": "Wildlife Stillness",
-      "caption": "A quiet wildlife frame from the field.",
-      "image": "/images/photography/photo-01.jpg"
-    },
-    {
-      "title": "Trail Light",
-      "caption": "Morning light crossing a walking track.",
-      "image": "/images/photography/photo-02.jpg"
-    },
-    {
-      "title": "Forest Detail",
-      "caption": "Small textures that reward slow observation.",
-      "image": "/images/photography/photo-03.jpg"
-    },
-    {
-      "title": "Open Ridge",
-      "caption": "A wider view from a day outside.",
-      "image": "/images/photography/photo-04.jpg"
-    },
-    {
-      "title": "Weather Window",
-      "caption": "Clouds, light, and timing doing most of the work.",
-      "image": "/images/photography/photo-05.jpg"
-    },
-    {
-      "title": "Coastal Walk",
-      "caption": "A frame from the edge of land and water.",
-      "image": "/images/photography/photo-06.jpg"
-    },
-    {
-      "title": "Nature Pattern",
-      "caption": "Shapes and repetition found outdoors.",
-      "image": "/images/photography/photo-07.jpg"
-    },
-    {
-      "title": "Hidden Movement",
-      "caption": "A moment caught between patience and luck.",
-      "image": "/images/photography/photo-08.jpg"
-    },
-    {
-      "title": "Track Notes",
-      "caption": "A memory from another trail day.",
-      "image": "/images/photography/photo-09.jpg"
-    },
-    {
-      "title": "Golden Pause",
-      "caption": "A favorite frame saved for the portfolio.",
-      "image": "/images/photography/photo-10.jpg"
-    }
+    
   ]
 }
