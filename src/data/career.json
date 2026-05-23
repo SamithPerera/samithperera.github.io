@@ -5,7 +5,7 @@
     "period": "Dec 2025 - Present",
     "type": "Full time",
     "description": "Leading platform reliability, cloud automation, and observability practices for production-grade cloud-native environments.",
-    "skills": ["SRE", "Cloud", "Automation", "Observability"]
+    "skills": ["SRE", "Cloud", "Automation", "Observability", "CI/CD", "Kubernetes", "Ansible", "Terraform", "Gitlab CI"]
   },
   {
     "company": "Netvalue",
@@ -18,15 +18,31 @@
   {
     "company": "John Wiley & Sons",
     "role": "Senior DevOps Engineer",
-    "period": "Aug 2021 - Oct 2023",
+    "period": "Apr 2023 - Oct 2023",
+    "type": "Full time",
+    "description": "Managed enterprise observability and logging platforms, including ELK and Splunk Cloud migration for around 200 TB of logs across 300+ applications.",
+    "skills": ["ELK", "Splunk", "Cloud", "Logging", "Operations"]
+  },
+  {
+    "company": "John Wiley & Sons",
+    "role": "DevOps Engineer",
+    "period": "Aug 2021 - Apr 2023",
     "type": "Full time",
     "description": "Managed enterprise observability and logging platforms, including ELK and Splunk Cloud migration for around 200 TB of logs across 300+ applications.",
     "skills": ["ELK", "Splunk", "Cloud", "Logging", "Operations"]
   },
   {
     "company": "Axiata Digital Labs",
+    "role": "Senior Cloud Operation Engineer",
+    "period": "Jan 2021 - Aug 2021",
+    "type": "Full time",
+    "description": "Administered Kubernetes clusters, GCP production infrastructure, monitoring, alerting, and infrastructure automation using Ansible and Terraform.",
+    "skills": ["GCP", "Prometheus", "Grafana", "Ansible", "Terraform"]
+  },
+  {
+    "company": "Axiata Digital Labs",
     "role": "Cloud Operation Engineer",
-    "period": "Jun 2020 - Jul 2021",
+    "period": "Jun 2020 - Jan 2021",
     "type": "Full time",
     "description": "Administered Kubernetes clusters, GCP production infrastructure, monitoring, alerting, and infrastructure automation using Ansible and Terraform.",
     "skills": ["GCP", "Prometheus", "Grafana", "Ansible", "Terraform"]
@@ -41,8 +57,24 @@
   },
   {
     "company": "eBEYONDS",
-    "role": "DevOps Engineer and Interactive Media Developer",
-    "period": "Sep 2015 - Jun 2019",
+    "role": "UI/UX Engineer",
+    "period": "Sep 2018 - Jun 2019",
+    "type": "Full time",
+    "description": "Developed and maintained web applications with Node.js and PHP, built Jenkins pipelines, and created web animation and interactive media for clients.",
+    "skills": ["Node.js", "PHP", "Jenkins", "Web Apps", "Automation"]
+  },
+  {
+    "company": "eBEYONDS",
+    "role": "Interactive Media Developer",
+    "period": "Jan 2016 - Sep 2018",
+    "type": "Full time",
+    "description": "Developed and maintained web applications with Node.js and PHP, built Jenkins pipelines, and created web animation and interactive media for clients.",
+    "skills": ["Node.js", "PHP", "Jenkins", "Web Apps", "Automation"]
+  },
+  {
+    "company": "eBEYONDS",
+    "role": "Intern",
+    "period": "Sep 2015 - Jan 2016",
     "type": "Full time",
     "description": "Developed and maintained web applications with Node.js and PHP, built Jenkins pipelines, and created web animation and interactive media for clients.",
     "skills": ["Node.js", "PHP", "Jenkins", "Web Apps", "Automation"]

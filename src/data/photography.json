@@ -33,40 +33,16 @@
     "description": "A small space for photography awards, mentions, exhibitions, and featured work.",
     "items": [
       {
-        "year": "2026",
-        "title": "Wildlife Frame Award",
-        "issuer": "Replace with awarding body",
-        "description": "Placeholder award entry. Replace this with the award name, category, and result."
+        "year": "2024",
+        "title": "Wild Srilanka Photographer of the Year - Second Runner Up",
+        "issuer": "Wild Srilanka",
+        "description": ""
       },
       {
         "year": "2025",
-        "title": "Nature Photography Feature",
-        "issuer": "Replace with publication or competition",
-        "description": "Placeholder recognition entry for a featured image, finalist listing, or exhibition."
-      },
-      {
-        "year": "2024",
-        "title": "Outdoor Storytelling Mention",
-        "issuer": "Replace with organization",
-        "description": "Placeholder award entry for hiking, travel, wildlife, or landscape photography."
-      },
-      {
-        "year": "2026",
-        "title": "Wildlife Frame Award",
-        "issuer": "Replace with awarding body",
-        "description": "Placeholder award entry. Replace this with the award name, category, and result."
-      },
-      {
-        "year": "2025",
-        "title": "Nature Photography Feature",
-        "issuer": "Replace with publication or competition",
-        "description": "Placeholder recognition entry for a featured image, finalist listing, or exhibition."
-      },
-      {
-        "year": "2024",
-        "title": "Outdoor Storytelling Mention",
-        "issuer": "Replace with organization",
-        "description": "Placeholder award entry for hiking, travel, wildlife, or landscape photography."
+        "title": "Wild Srilanka Photographer of the Year - Merit Award",
+        "issuer": "Wild Srilanka",
+        "description": ""
       }
     ]
   },
