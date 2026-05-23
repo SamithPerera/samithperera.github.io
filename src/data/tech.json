@@ -1,0 +1,52 @@
+{
+  "categories": [
+    {
+      "title": "Cloud Platforms",
+      "skills": [
+        { "name": "AWS", "level": 3, "icon": "mdi:cloud" },
+        { "name": "Google Cloud", "level": 2, "icon": "mdi:cloud-outline" }
+      ]
+    },
+    {
+      "title": "Containers and Orchestration",
+      "skills": [
+        { "name": "Kubernetes", "level": 3, "icon": "mdi:hexagon-multiple" },
+        { "name": "Docker", "level": 3, "icon": "mdi:docker" },
+        { "name": "OpenShift", "level": 2, "icon": "mdi:cube-outline" }
+      ]
+    },
+    {
+      "title": "Automation and Delivery",
+      "skills": [
+        { "name": "Terraform", "level": 3, "icon": "mdi:layers-triple" },
+        { "name": "Ansible", "level": 3, "icon": "mdi:application-cog" },
+        { "name": "GitHub Actions", "level": 3, "icon": "mdi:github" },
+        { "name": "GitLab CI", "level": 3, "icon": "mdi:gitlab" },
+        { "name": "Jenkins", "level": 2, "icon": "mdi:cog-outline" },
+        { "name": "Argo CD", "level": 2, "icon": "mdi:source-branch" }
+      ]
+    },
+    {
+      "title": "Observability",
+      "skills": [
+        { "name": "Datadog", "level": 3, "icon": "mdi:chart-line" },
+        { "name": "ELK", "level": 3, "icon": "mdi:database-search" },
+        { "name": "Splunk", "level": 3, "icon": "mdi:magnify-scan" },
+        { "name": "Prometheus", "level": 3, "icon": "mdi:chart-areaspline" },
+        { "name": "Grafana", "level": 3, "icon": "mdi:gauge" },
+        { "name": "Zabbix", "level": 2, "icon": "mdi:monitor-dashboard" }
+      ]
+    },
+    {
+      "title": "Scripting and Systems",
+      "skills": [
+        { "name": "Python", "level": 2, "icon": "mdi:language-python" },
+        { "name": "Bash", "level": 3, "icon": "mdi:console" },
+        { "name": "PowerShell", "level": 2, "icon": "mdi:console" },
+        { "name": "Node.js", "level": 2, "icon": "mdi:nodejs" },
+        { "name": "Linux", "level": 3, "icon": "mdi:linux" },
+        { "name": "Nginx", "level": 2, "icon": "mdi:server-network" }
+      ]
+    }
+  ]
+}

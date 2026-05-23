@@ -1,0 +1,19 @@
+{
+  "recent": {
+    "marker": "/",
+    "title": "Recent Blogs",
+    "description": "Thoughts on platform engineering, observability, automation, and operating cloud-native systems.",
+    "limit": 3,
+    "moreLabel": "More",
+    "moreHref": "/blogs/",
+    "moreIcon": "mdi:arrow-right",
+    "cardIcon": "mdi:arrow-top-right"
+  },
+  "page": {
+    "eyebrow": "Field Notes",
+    "title": "Blogs",
+    "titleTemplate": "Blogs | {name}",
+    "description": "Everything I have drafted here so far on DevOps, SRE, platform engineering, and observability."
+  },
+  "postLinkLabel": "Read post"
+}

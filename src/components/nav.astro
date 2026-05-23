@@ -1,0 +1,202 @@
+---
+import { Icon } from 'astro-icon/components';
+import ThemeToggle from './theme-toggle.astro';
+import site from '../data/site.json';
+
+const navItems = site.pageSections.filter((section) => section.showInNav);
+---
+
+<div id="theme-toggle-wrapper" class="theme-toggle-wrapper">
+  <ThemeToggle />
+</div>
+
+<div class="nav-shell">
+  <nav id="main-nav" aria-label={site.ui.mainNavigationLabel}>
+    <ul>
+      {navItems.map((item) => (
+        <li>
+          <a href={item.href} class="nav-link">
+            <span class="mobile-icon">
+              <Icon name={item.icon} class="h-6 w-6" />
+            </span>
+            <span>{item.label}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</div>
+
+<style>
+  .theme-toggle-wrapper {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 90;
+  }
+
+  .nav-shell {
+    position: fixed;
+    left: 50%;
+    top: 1.5rem;
+    z-index: 80;
+    width: min(62rem, calc(100% - 7rem));
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  #main-nav {
+    width: auto;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 20%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-background) 44%, transparent);
+    backdrop-filter: blur(12px);
+    transition:
+      width 0.4s ease,
+      background 0.4s ease,
+      border-color 0.4s ease,
+      box-shadow 0.4s ease;
+    pointer-events: auto;
+  }
+
+  #main-nav.scrolling {
+    width: auto;
+    border-color: color-mix(in srgb, var(--color-accent) 28%, transparent);
+    background: color-mix(in srgb, var(--color-background) 78%, transparent);
+    box-shadow: 0 14px 36px color-mix(in srgb, black 20%, transparent);
+    backdrop-filter: blur(14px);
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1rem, 3.2vw, 2.9rem);
+    min-height: 3rem;
+    margin: 0;
+    padding: 0 1.4rem;
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: color-mix(in srgb, var(--color-accent) 78%, var(--color-maintext));
+    font-size: 0.98rem;
+    font-weight: 650;
+    letter-spacing: 0;
+    transition:
+      color 0.25s ease,
+      transform 0.25s ease,
+      text-shadow 0.25s ease;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--color-maintext);
+    transform: scale(1.04);
+    text-shadow: 0 0 12px color-mix(in srgb, var(--color-maintext) 30%, transparent);
+  }
+
+  @media (max-width: 1100px) and (min-width: 761px) {
+    .nav-shell {
+      width: min(48rem, calc(100% - 5rem));
+    }
+
+    ul {
+      gap: clamp(0.9rem, 2.6vw, 2rem);
+      padding: 0 1.1rem;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+    }
+  }
+
+  .mobile-icon {
+    display: none;
+  }
+
+  @media (max-width: 760px) {
+    .nav-shell {
+      top: auto;
+      bottom: 0;
+      width: 100%;
+    }
+
+    #main-nav,
+    #main-nav.scrolling {
+      width: 100%;
+      border-radius: 1.25rem 1.25rem 0 0;
+      border-color: color-mix(in srgb, var(--color-maintext) 12%, transparent);
+      background: color-mix(in srgb, var(--color-background) 88%, transparent);
+      backdrop-filter: blur(14px);
+    }
+
+    ul {
+      justify-content: space-between;
+      gap: 0.25rem;
+      min-height: 4.2rem;
+      padding: 0.55rem 0.8rem;
+    }
+
+    li {
+      flex: 1;
+    }
+
+    .nav-link {
+      width: 100%;
+      flex-direction: column;
+      gap: 0.15rem;
+      font-size: 0.72rem;
+    }
+
+    .mobile-icon {
+      display: inline-flex;
+    }
+
+    body {
+      padding-bottom: 4.5rem;
+    }
+  }
+</style>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  const links = document.querySelectorAll('.nav-link');
+
+  function updateNav() {
+    nav?.classList.toggle('scrolling', window.scrollY > 12);
+  }
+
+  function updateActiveLink() {
+    const sections = Array.from(document.querySelectorAll('section[id]'));
+    const current = sections.find((section) => {
+      const rect = section.getBoundingClientRect();
+      return rect.top <= window.innerHeight * 0.46 && rect.bottom >= window.innerHeight * 0.46;
+    });
+
+    links.forEach((link) => link.classList.remove('active'));
+    if (current) {
+      const active = document.querySelector(`.nav-link[href="/#${current.id}"], .nav-link[href="#${current.id}"]`);
+      active?.classList.add('active');
+    }
+  }
+
+  window.addEventListener('scroll', () => {
+    updateNav();
+    updateActiveLink();
+  }, { passive: true });
+
+  updateNav();
+  updateActiveLink();
+</script>

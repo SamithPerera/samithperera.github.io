@@ -1,0 +1,103 @@
+{
+  "section": {
+    "marker": "/",
+    "eyebrow": "Credentials",
+    "title": "Certifications",
+    "description": "Cloud, Kubernetes, agile, and Linux credentials that support my platform engineering practice.",
+    "legend": [
+      { "label": "Certification", "type": "certification" },
+      { "label": "Professional Development", "type": "professional-development" },
+      { "label": "In Progress", "type": "in-progress" }
+    ],
+    "labels": {
+      "courseTag": "Course",
+      "inProgress": "Actively Studying",
+      "viewCredential": "View Credential",
+      "viewCertificate": "View Certificate",
+      "noLink": "No link available",
+      "validityLabel": "Credential status"
+    }
+  },
+  "items": [
+    {
+      "name": "Kubernetes and Cloud Native Associate",
+      "issuer": "Cloud Native Computing Foundation",
+      "date": "2026",
+      "status": "Earned",
+      "type": "certification",
+      "validity": { "state": "active", "tooltip": "Active until 2028" },
+      "description": "Validates hands-on Kubernetes cluster administration, troubleshooting, scheduling, networking, storage, and security.",
+      "credentialUrl": ""
+    },
+    {
+      "name": "AWS Certified Solutions Architect - Associate SAA-C03",
+      "issuer": "Amazon Web Services",
+      "date": "2024",
+      "status": "Earned",
+      "type": "certification",
+      "validity": { "state": "active", "tooltip": "Active until 2027" },
+      "description": "Validates architecture knowledge for secure, resilient, high-performing, and cost-optimized AWS workloads.",
+      "credentialUrl": ""
+    },
+    {
+      "name": "Certified ScrumMaster",
+      "issuer": "Scrum Alliance",
+      "date": "2024",
+      "status": "Earned",
+      "type": "certification",
+      "validity": { "state": "active", "tooltip": "Active" },
+      "description": "Agile delivery credential focused on team facilitation, sprint ceremonies, impediment removal, and iterative delivery.",
+      "credentialUrl": ""
+    },
+    {
+      "name": "Certified Kubernetes Application Developer",
+      "issuer": "Cloud Native Computing Foundation",
+      "date": "2021",
+      "status": "Earned",
+      "type": "certification",
+      "validity": { "state": "expired", "tooltip": "Expired in 2024" },
+      "description": "Demonstrates ability to design, build, configure, and expose cloud-native applications on Kubernetes.",
+      "credentialUrl": ""
+    },
+    {
+      "name": "Certified Kubernetes Administrator",
+      "issuer": "Cloud Native Computing Foundation",
+      "date": "2020",
+      "status": "Earned",
+      "type": "certification",
+      "validity": { "state": "expired", "tooltip": "Expired in 2023" },
+      "description": "Validates hands-on Kubernetes cluster administration, troubleshooting, scheduling, networking, storage, and security.",
+      "credentialUrl": ""
+    },
+    {
+      "name": "AWS Certified Solutions Architect - Associate SAA-C02",
+      "issuer": "Amazon Web Services",
+      "date": "2020",
+      "status": "Earned",
+      "type": "certification",
+      "validity": { "state": "expired", "tooltip": "Expired in 2023" },
+      "description": "Earlier AWS Solutions Architect Associate certification covering cloud architecture and operational best practices.",
+      "credentialUrl": ""
+    },
+    {
+      "name": "Red Hat Certified Engineer",
+      "issuer": "Red Hat",
+      "date": "2018",
+      "status": "Earned",
+      "type": "certification",
+      "validity": { "state": "expired", "tooltip": "Expired in 2021" },
+      "description": "Linux engineering certification focused on automation, system administration, networking, and enterprise Linux operations.",
+      "credentialUrl": ""
+    },
+    {
+      "name": "Red Hat Certified System Administrator",
+      "issuer": "Red Hat",
+      "date": "2017",
+      "status": "Earned",
+      "type": "certification",
+      "validity": { "state": "expired", "tooltip": "Expired in 2020" },
+      "description": "Linux system administration certification covering core operational skills for managing Red Hat Enterprise Linux systems.",
+      "credentialUrl": ""
+    }
+  ]
+}

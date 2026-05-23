@@ -1,0 +1,29 @@
+{
+  "section": {
+    "marker": "/",
+    "title": "Beyond the Terminal",
+    "description": "Outside work, I trade dashboards for ridgelines, terminal prompts for trail markers, and cloud systems for quiet wild places.",
+    "ctaLabel": "Explore Photography",
+    "ctaHref": "/photography/"
+  },
+  "pursuits": [
+    {
+      "title": "Wildlife Photography",
+      "subtitle": "Patient frames from untamed places",
+      "description": "I look for small, honest moments in nature: movement, stillness, light, texture, and the quiet personality of wildlife.",
+      "icon": "mdi:camera-iris"
+    },
+    {
+      "title": "Nature Trails",
+      "subtitle": "Long walks with better signal",
+      "description": "Hiking gives me space to reset, observe, and keep curiosity alive away from screens and production alerts.",
+      "icon": "mdi:hiking"
+    },
+    {
+      "title": "Open-Air Exploration",
+      "subtitle": "Following weather, maps, and instinct",
+      "description": "I enjoy exploring forests, coastlines, mountain tracks, and everyday corners that become interesting when you slow down.",
+      "icon": "mdi:compass-outline"
+    }
+  ]
+}

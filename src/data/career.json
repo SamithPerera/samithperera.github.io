@@ -1,0 +1,50 @@
+[
+  {
+    "company": "Current role",
+    "role": "Senior DevOps Engineer",
+    "period": "Dec 2025 - Present",
+    "type": "Full time",
+    "description": "Leading platform reliability, cloud automation, and observability practices for production-grade cloud-native environments.",
+    "skills": ["SRE", "Cloud", "Automation", "Observability"]
+  },
+  {
+    "company": "Netvalue",
+    "role": "DevOps Engineer",
+    "period": "Sep 2023 - Nov 2025",
+    "type": "Full time",
+    "description": "Owned Datadog integration, AWS serverless monitoring, Kubernetes hosting, and CI/CD automation, including reducing legacy deployment time from about 3 hours to 15 minutes per node.",
+    "skills": ["Datadog", "AWS", "Kubernetes", "Terraform", "GitHub Actions"]
+  },
+  {
+    "company": "John Wiley & Sons",
+    "role": "Senior DevOps Engineer",
+    "period": "Aug 2021 - Oct 2023",
+    "type": "Full time",
+    "description": "Managed enterprise observability and logging platforms, including ELK and Splunk Cloud migration for around 200 TB of logs across 300+ applications.",
+    "skills": ["ELK", "Splunk", "Cloud", "Logging", "Operations"]
+  },
+  {
+    "company": "Axiata Digital Labs",
+    "role": "Cloud Operation Engineer",
+    "period": "Jun 2020 - Jul 2021",
+    "type": "Full time",
+    "description": "Administered Kubernetes clusters, GCP production infrastructure, monitoring, alerting, and infrastructure automation using Ansible and Terraform.",
+    "skills": ["GCP", "Prometheus", "Grafana", "Ansible", "Terraform"]
+  },
+  {
+    "company": "Esshva TechQ",
+    "role": "DevOps Engineer",
+    "period": "Jun 2019 - Jun 2020",
+    "type": "Full time",
+    "description": "Maintained Node.js and .NET applications, managed 30+ on-prem servers, configured Zabbix monitoring, and delivered CI/CD pipelines for multiple projects.",
+    "skills": ["AWS", "Docker", "Zabbix", "CI/CD", "Servers"]
+  },
+  {
+    "company": "eBEYONDS",
+    "role": "DevOps Engineer and Interactive Media Developer",
+    "period": "Sep 2015 - Jun 2019",
+    "type": "Full time",
+    "description": "Developed and maintained web applications with Node.js and PHP, built Jenkins pipelines, and created web animation and interactive media for clients.",
+    "skills": ["Node.js", "PHP", "Jenkins", "Web Apps", "Automation"]
+  }
+]

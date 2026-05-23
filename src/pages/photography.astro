@@ -1,0 +1,561 @@
+---
+import { Icon } from 'astro-icon/components';
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/nav.astro';
+import localData from '../data/home.json';
+import photography from '../data/photography.json';
+
+const { page, story, instagram, awards, gallery } = photography;
+const pageTitle = page.titleTemplate.replace('{name}', localData.name);
+---
+
+<Layout title={pageTitle}>
+  <Nav />
+  <section class="photography-page section-container">
+    <div class="photo-hero">
+      <p>{page.eyebrow}</p>
+      <h1>{page.title}</h1>
+      <span>{page.intro}</span>
+    </div>
+
+    <div class="photo-story">
+      <div class="story-lede">
+        <Icon name="mdi:camera-iris" class="h-9 w-9" />
+        <p>{page.description}</p>
+      </div>
+
+      {story.map((item) => (
+        <article>
+          <h2>{item.title}</h2>
+          <p>{item.body}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="awards-section">
+      <div class="awards-heading">
+        <h2>{awards.title}</h2>
+        <p>{awards.description}</p>
+      </div>
+
+      <div class="awards-list">
+        {awards.items.map((award) => (
+          <article>
+            <span>{award.year}</span>
+            <div>
+              <h3>{award.title}</h3>
+              <strong>{award.issuer}</strong>
+              <p>{award.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div class="gallery-heading">
+      <div>
+        <h2>{instagram.title}</h2>
+        <p>{instagram.description}</p>
+      </div>
+      <a href={instagram.profileUrl} target="_blank" rel="noopener noreferrer">
+        <Icon name="mdi:instagram" class="h-5 w-5" />
+        <span>{instagram.ctaLabel}</span>
+      </a>
+    </div>
+
+    <div class="photo-gallery" aria-label={instagram.title}>
+      {gallery.map((photo, index) => (
+        <button class="photo-card" type="button" data-gallery-index={index} aria-label={`Open ${photo.title}`}>
+          <img src={photo.image} alt={photo.title} loading="lazy" onerror="this.dataset.missing = 'true'" />
+          <Icon name="mdi:image-outline" class="fallback-icon" />
+          <span class="open-icon">
+            <Icon name="mdi:arrow-expand-all" class="h-5 w-5" />
+          </span>
+          <span class="photo-caption">
+            <span>{photo.title}</span>
+            <p>{photo.caption}</p>
+          </span>
+        </button>
+      ))}
+    </div>
+
+    <div class="lightbox" data-lightbox hidden>
+      <button class="lightbox-close" type="button" data-lightbox-close aria-label="Close slideshow">
+        <Icon name="mdi:close" class="h-6 w-6" />
+      </button>
+      <button class="lightbox-nav lightbox-prev" type="button" data-lightbox-prev aria-label="Previous photo">
+        <Icon name="mdi:chevron-left" class="h-8 w-8" />
+      </button>
+      <figure>
+        <img src="" alt="" data-lightbox-image />
+        <figcaption>
+          <span data-lightbox-count></span>
+          <h2 data-lightbox-title></h2>
+          <p data-lightbox-caption></p>
+        </figcaption>
+      </figure>
+      <button class="lightbox-nav lightbox-next" type="button" data-lightbox-next aria-label="Next photo">
+        <Icon name="mdi:chevron-right" class="h-8 w-8" />
+      </button>
+    </div>
+  </section>
+</Layout>
+
+<script define:vars={{ gallery }}>
+  const photos = gallery;
+  const cards = document.querySelectorAll('[data-gallery-index]');
+  const lightbox = document.querySelector('[data-lightbox]');
+  const image = document.querySelector('[data-lightbox-image]');
+  const title = document.querySelector('[data-lightbox-title]');
+  const caption = document.querySelector('[data-lightbox-caption]');
+  const count = document.querySelector('[data-lightbox-count]');
+  const closeButton = document.querySelector('[data-lightbox-close]');
+  const previousButton = document.querySelector('[data-lightbox-prev]');
+  const nextButton = document.querySelector('[data-lightbox-next]');
+  let activeIndex = 0;
+
+  function renderPhoto(index) {
+    if (!photos.length || !image || !title || !caption || !count) return;
+
+    activeIndex = (index + photos.length) % photos.length;
+    const photo = photos[activeIndex];
+
+    image.src = photo.image;
+    image.alt = photo.title;
+    title.textContent = photo.title;
+    caption.textContent = photo.caption;
+    count.textContent = `${activeIndex + 1} / ${photos.length}`;
+  }
+
+  function openLightbox(index) {
+    if (!lightbox || !photos.length) return;
+
+    renderPhoto(index);
+    lightbox.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+
+    lightbox.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener('click', () => openLightbox(Number(card.dataset.galleryIndex)));
+  });
+
+  closeButton?.addEventListener('click', closeLightbox);
+  previousButton?.addEventListener('click', () => renderPhoto(activeIndex - 1));
+  nextButton?.addEventListener('click', () => renderPhoto(activeIndex + 1));
+  lightbox?.addEventListener('click', (event) => {
+    if (event.target === lightbox) closeLightbox();
+  });
+
+  window.addEventListener('keydown', (event) => {
+    if (lightbox?.hidden) return;
+    if (event.key === 'Escape') closeLightbox();
+    if (event.key === 'ArrowLeft') renderPhoto(activeIndex - 1);
+    if (event.key === 'ArrowRight') renderPhoto(activeIndex + 1);
+  });
+</script>
+
+<style>
+  .photography-page {
+    min-height: 100vh;
+    padding-top: 8.5rem;
+  }
+
+  .photo-hero {
+    max-width: 64rem;
+    margin-bottom: 2.75rem;
+  }
+
+  .photo-hero > p {
+    color: var(--color-accent);
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin-top: 0.8rem;
+    color: var(--color-maintext);
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 8vw, 5.7rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: 0;
+  }
+
+  .photo-hero span {
+    display: block;
+    max-width: 50rem;
+    margin-top: 1.15rem;
+    color: var(--color-subtext);
+    font-size: 1.08rem;
+    line-height: 1.75;
+  }
+
+  .photo-story {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .story-lede,
+  .photo-story article {
+    border: 1px solid color-mix(in srgb, var(--color-maintext) 10%, transparent);
+    border-radius: 0.55rem;
+    background: color-mix(in srgb, var(--color-panel) 74%, transparent);
+  }
+
+  .story-lede {
+    min-height: 13rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--color-accent);
+    padding: 1.35rem;
+  }
+
+  .story-lede p,
+  .photo-story article p,
+  .gallery-heading p,
+  .photo-card p,
+  .awards-heading p,
+  .awards-list p {
+    color: var(--color-subtext);
+    line-height: 1.7;
+  }
+
+  .photo-story article {
+    padding: 1.35rem;
+  }
+
+  .photo-story h2,
+  .gallery-heading h2,
+  .awards-heading h2 {
+    color: var(--color-maintext);
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 850;
+    letter-spacing: 0;
+  }
+
+  .photo-story article p {
+    margin-top: 0.75rem;
+  }
+
+  .awards-section {
+    margin-bottom: 3.5rem;
+  }
+
+  .awards-heading {
+    max-width: 42rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .awards-heading p {
+    margin-top: 0.55rem;
+  }
+
+  .awards-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .awards-list article {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1rem;
+    border: 1px solid color-mix(in srgb, var(--color-maintext) 10%, transparent);
+    border-radius: 0.55rem;
+    background:
+      linear-gradient(145deg, color-mix(in srgb, var(--color-accent) 12%, transparent), transparent 48%),
+      color-mix(in srgb, var(--color-panel) 74%, transparent);
+    padding: 1.15rem;
+  }
+
+  .awards-list article > span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.6rem;
+    height: 3.6rem;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 42%, transparent);
+    border-radius: 999px;
+    color: var(--color-accent);
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 900;
+  }
+
+  .awards-list h3 {
+    color: var(--color-maintext);
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 850;
+    letter-spacing: 0;
+  }
+
+  .awards-list strong {
+    display: block;
+    margin-top: 0.35rem;
+    color: var(--color-accent);
+    font-size: 0.8rem;
+  }
+
+  .awards-list p {
+    margin-top: 0.65rem;
+    font-size: 0.95rem;
+  }
+
+  .gallery-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .gallery-heading a {
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 34%, transparent);
+    border-radius: 0.5rem;
+    color: var(--color-maintext);
+    background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+    padding: 0 1rem;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  .photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1.1rem;
+  }
+
+  .photo-card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border: 1px solid color-mix(in srgb, var(--color-maintext) 10%, transparent);
+    border-radius: 0.55rem;
+    background: color-mix(in srgb, var(--color-panel) 74%, transparent);
+    text-align: left;
+    cursor: pointer;
+    transition:
+      transform 0.25s ease,
+      border-color 0.25s ease;
+  }
+
+  .photo-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    opacity: 1;
+    transition:
+      transform 0.25s ease;
+  }
+
+  .photo-card img[data-missing='true'] {
+    display: none;
+  }
+
+  .fallback-icon {
+    position: absolute;
+    inset: 0 0 4.6rem;
+    z-index: 0;
+    width: 4rem;
+    height: 4rem;
+    margin: auto;
+    color: color-mix(in srgb, var(--color-accent) 46%, transparent);
+  }
+
+  .photo-card:hover img {
+    transform: scale(1.04);
+  }
+
+  .photo-card:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--color-accent) 44%, transparent);
+  }
+
+  .open-icon {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid color-mix(in srgb, white 16%, transparent);
+    border-radius: 999px;
+    color: #ffffff;
+    background: rgba(5, 9, 20, 0.68);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .photo-card:hover .open-icon {
+    opacity: 1;
+  }
+
+  .photo-caption {
+    position: relative;
+    z-index: 1;
+    display: block;
+    min-height: 6.7rem;
+    padding: 0.95rem;
+  }
+
+  .photo-caption span {
+    color: var(--color-accent);
+    font-size: 0.75rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .photo-card p {
+    margin-top: 0.35rem;
+    color: var(--color-maintext);
+    font-weight: 800;
+  }
+
+  .lightbox[hidden] {
+    display: none;
+  }
+
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(2, 6, 18, 0.92);
+    padding: clamp(1rem, 4vw, 2.5rem);
+  }
+
+  .lightbox figure {
+    min-width: 0;
+    margin: 0;
+  }
+
+  .lightbox img {
+    width: 100%;
+    max-height: 76vh;
+    object-fit: contain;
+    border: 1px solid color-mix(in srgb, white 12%, transparent);
+    border-radius: 0.55rem;
+    background: #020617;
+  }
+
+  .lightbox figcaption {
+    margin-top: 1rem;
+    color: var(--color-maintext);
+  }
+
+  .lightbox figcaption span {
+    color: var(--color-accent);
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+  }
+
+  .lightbox figcaption h2 {
+    margin-top: 0.35rem;
+    color: var(--color-maintext);
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    letter-spacing: 0;
+  }
+
+  .lightbox figcaption p {
+    margin-top: 0.35rem;
+    color: var(--color-subtext);
+  }
+
+  .lightbox-close,
+  .lightbox-nav {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid color-mix(in srgb, white 16%, transparent);
+    border-radius: 999px;
+    color: #ffffff;
+    background: rgba(15, 23, 42, 0.82);
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2.7rem;
+    height: 2.7rem;
+  }
+
+  .lightbox-nav {
+    width: 3.1rem;
+    height: 3.1rem;
+  }
+
+  @media (max-width: 1000px) {
+    .photo-story {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .story-lede {
+      grid-column: 1 / -1;
+    }
+
+    .awards-list,
+    .photo-gallery {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .lightbox {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .lightbox-prev {
+      left: 1rem;
+    }
+
+    .lightbox-next {
+      right: 1rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .photo-story,
+    .awards-list,
+    .photo-gallery {
+      grid-template-columns: 1fr;
+    }
+
+    .gallery-heading {
+      align-items: start;
+      flex-direction: column;
+    }
+  }
+</style>

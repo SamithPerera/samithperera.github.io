@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "description": "Samith Perera is a DevOps, Platform, and SRE engineer focused on cloud-native platforms, Kubernetes, observability, and CI/CD automation.",
+    "themeColor": "#050816"
+  },
+  "pageSections": [
+    {
+      "key": "home",
+      "label": "Home",
+      "href": "/#home",
+      "icon": "mdi:home",
+      "showInNav": true
+    },
+    {
+      "key": "career",
+      "label": "Career",
+      "href": "/#career",
+      "icon": "mdi:briefcase-outline",
+      "showInNav": true
+    },
+    {
+      "key": "certifications",
+      "label": "Certs",
+      "href": "/#certifications",
+      "icon": "mdi:certificate-outline",
+      "showInNav": true
+    },
+    {
+      "key": "tech",
+      "label": "Tech",
+      "href": "/#tech",
+      "icon": "mdi:code-tags",
+      "showInNav": true
+    },
+    {
+      "key": "blogs",
+      "label": "Blogs",
+      "href": "/#blogs",
+      "icon": "mdi:post-outline",
+      "showInNav": true
+    },
+    {
+      "key": "outside-work",
+      "label": "Outside Work",
+      "href": "/#outside-work",
+      "icon": "mdi:camera-iris",
+      "showInNav": true
+    }
+  ],
+  "sections": {
+    "career": {
+      "marker": "/",
+      "title": "Career",
+      "description": "Cloud, platform, and observability work across enterprise, telecom, and digital teams."
+    },
+    "tech": {
+      "marker": "/",
+      "title": "Tech Stack",
+      "description": "Breakdown of my technical skills, categorized by domain and proficiency",
+      "legend": [
+        { "label": "Expert", "level": 3 },
+        { "label": "Proficient", "level": 2 },
+        { "label": "Beginner", "level": 1 }
+      ]
+    }
+  },
+  "footer": {
+    "year": "2026",
+    "builtWith": "Built with Astro and Tailwind CSS",
+    "separator": "/",
+    "platform": {
+      "label": "Astro",
+      "url": "https://astro.build",
+      "icon": "skill-icons:astro"
+    }
+  },
+  "ui": {
+    "mainNavigationLabel": "Main navigation",
+    "backToTopLabel": "Back to top",
+    "themeToggleLabel": "Toggle color theme",
+    "themeToggleTitle": "Toggle theme"
+  }
+}

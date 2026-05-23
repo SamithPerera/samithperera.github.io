@@ -1,0 +1,77 @@
+{
+  "name": "Samith Perera",
+  "role": "DevOps | Platform | SRE Engineer",
+  "location": "Hamilton, New Zealand",
+  "phone": "+64 20 4159 8309",
+  "email": "samithchandula@gmail.com",
+  "photoUrl": "",
+  "intro": "DevOps engineer with 10+ years of experience building resilient cloud-native platforms, Kubernetes environments, observability systems, and CI/CD automation across telecom, enterprise, and digital industries.",
+  "introHtml": "DevOps engineer with <span class='text-maintext font-bold'>10+ years</span> of experience building resilient cloud-native platforms, Kubernetes environments, observability systems, and CI/CD automation across telecom, enterprise, and digital industries.",
+  "webpageTitle": "Samith Perera | DevOps Platform SRE Engineer",
+  "resumeUrl": "/samith-perera-cv.pdf",
+  "hero": {
+    "eyebrow": "Welcome to my portfolio",
+    "greeting": "Hi, I'm",
+    "socialLabel": "Social links",
+    "terminal": {
+      "ariaLabel": "Animated profile terminal",
+      "title": "samith@portfolio:~",
+      "user": "samith@portfolio",
+      "path": "~",
+      "icon": "mdi:linux",
+      "loopDelayMs": 1600,
+      "commands": [
+        {
+          "command": "whoami",
+          "output": [
+            "Samith Perera",
+            "DevOps, Platform and SRE engineer based in Hamilton, New Zealand.",
+            "I build Kubernetes platforms, automate delivery pipelines, and make systems observable before they become mysterious."
+          ]
+        },
+        {
+          "command": "mycerts",
+          "output": [
+            "Kubernetes: CKA, CKAD, CKS",
+            "Cloud: AWS Certified Solutions Architect Associate, AWS Certified SysOps Administrator Associate",
+            "Linux: Red Hat Certified Engineer, Red Hat Certified System Administrator"
+          ]
+        },
+        {
+          "command": "myjobs",
+          "output": [
+            "Platform engineering across telecom, enterprise, and digital environments.",
+            "Recent focus: Kubernetes operations, CI/CD automation, observability, cloud infrastructure, and reliability practices.",
+            "Toolbox: AWS, GCP, Terraform, Ansible, Datadog, ELK, Splunk, Prometheus, Grafana, Jenkins, and GitHub Actions."
+          ]
+        }
+      ]
+    }
+  },
+  "socials": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/samithperera",
+      "icon": "mdi:github",
+      "showInContact": true
+    },
+    {
+      "name": "LinkedIn",
+      "url": "https://www.linkedin.com/in/samith-perera/",
+      "icon": "mdi:linkedin",
+      "showInContact": true
+    },
+    {
+      "name": "Email",
+      "url": "mailto:samithchandula@gmail.com",
+      "icon": "mdi:email",
+      "showInContact": true
+    },
+    {
+      "name": "Phone",
+      "url": "tel:+642041598309",
+      "icon": "mdi:phone",
+      "showInContact": true
+    }
+  ]
+}

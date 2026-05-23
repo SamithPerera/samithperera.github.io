@@ -1,0 +1,183 @@
+---
+import { Icon } from 'astro-icon/components';
+import outsideWork from '../data/outside-work.json';
+import localData from '../data/home.json';
+import site from '../data/site.json';
+
+const { section, pursuits } = outsideWork;
+const footer = site.footer;
+---
+
+<section id="outside-work" class="outside-work section-container">
+  <div class="outside-heading">
+    <div>
+      <h2><span>{section.marker}</span> {section.title}</h2>
+      <p>{section.description}</p>
+    </div>
+    <a href={section.ctaHref} class="outside-link">
+      <span>{section.ctaLabel}</span>
+      <Icon name="mdi:arrow-right" class="h-5 w-5" />
+    </a>
+  </div>
+
+  <div class="pursuit-grid">
+    {pursuits.map((item) => (
+      <article class="pursuit-card">
+        <Icon name={item.icon} class="pursuit-icon" />
+        <span>{item.subtitle}</span>
+        <h3>{item.title}</h3>
+        <p>{item.description}</p>
+      </article>
+    ))}
+  </div>
+
+  <footer class="site-footer">
+    <p>{localData.name} &copy; {footer.year}</p>
+    <div>
+      <span>{footer.builtWith}</span>
+      <span>{footer.separator}</span>
+      <a href={footer.platform.url} target="_blank" rel="noopener noreferrer">
+        <Icon name={footer.platform.icon} class="h-4 w-4" />
+        <span>{footer.platform.label}</span>
+      </a>
+    </div>
+  </footer>
+</section>
+
+<style>
+  .outside-work {
+    padding-bottom: 3rem;
+  }
+
+  .outside-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    color: var(--color-maintext);
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  h2 span {
+    color: var(--color-accent);
+  }
+
+  .outside-heading p {
+    max-width: 42rem;
+    margin-top: 0.75rem;
+    color: var(--color-subtext);
+    line-height: 1.7;
+  }
+
+  .outside-link {
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 34%, transparent);
+    border-radius: 0.5rem;
+    color: var(--color-maintext);
+    background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+    padding: 0 1rem;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  .pursuit-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .pursuit-card {
+    min-height: 19rem;
+    border: 1px solid color-mix(in srgb, var(--color-maintext) 10%, transparent);
+    border-radius: 0.55rem;
+    background:
+      linear-gradient(145deg, color-mix(in srgb, var(--color-accent) 12%, transparent), transparent 45%),
+      color-mix(in srgb, var(--color-panel) 74%, transparent);
+    padding: 1.35rem;
+  }
+
+  .pursuit-icon {
+    width: 2rem;
+    height: 2rem;
+    color: var(--color-accent);
+  }
+
+  .pursuit-card span {
+    display: block;
+    margin-top: 2rem;
+    color: var(--color-muted);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    margin-top: 0.65rem;
+    color: var(--color-maintext);
+    font-family: var(--font-heading);
+    font-size: 1.55rem;
+    font-weight: 850;
+    letter-spacing: 0;
+  }
+
+  .pursuit-card p {
+    margin-top: 0.8rem;
+    color: var(--color-subtext);
+    line-height: 1.7;
+  }
+
+  .site-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 4rem;
+    border-top: 1px solid color-mix(in srgb, var(--color-maintext) 8%, transparent);
+    padding-top: 1.5rem;
+    color: var(--color-subtext);
+    font-size: 0.85rem;
+  }
+
+  .site-footer div,
+  .site-footer a {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+
+  .site-footer a {
+    color: var(--color-subtext);
+  }
+
+  .site-footer a:hover {
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 900px) {
+    .outside-heading,
+    .site-footer {
+      align-items: start;
+      flex-direction: column;
+    }
+
+    .pursuit-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,25 @@
+services:
+  portfolio:
+    build:
+      context: .
+      target: server
+    container_name: samith-portfolio
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
+  portfolio-dev:
+    build:
+      context: .
+      target: dev
+    container_name: samith-portfolio-dev
+    ports:
+      - "4321:4321"
+    volumes:
+      - ./:/app
+      - portfolio_node_modules:/app/node_modules
+    profiles:
+      - dev
+
+volumes:
+  portfolio_node_modules:

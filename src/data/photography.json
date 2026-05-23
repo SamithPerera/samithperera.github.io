@@ -1,0 +1,125 @@
+{
+  "page": {
+    "titleTemplate": "Photography | {name}",
+    "eyebrow": "Outside Work",
+    "title": "Samith the Photographer",
+    "intro": "Wildlife and nature photography is where I slow the world down. I am drawn to quiet landscapes, patient observation, trail-side details, and the unpredictable character of animals in their own environment.",
+    "description": "This page is a more personal corner of the portfolio: a place for hiking stories, nature notes, and an Instagram-only wall for photography updates."
+  },
+  "story": [
+    {
+      "title": "What I Look For",
+      "body": "Light, movement, weather, texture, and the short-lived moments that disappear if you rush them."
+    },
+    {
+      "title": "Where I Wander",
+      "body": "Forest paths, coastlines, wetlands, mountain tracks, and any quiet place that rewards patience."
+    },
+    {
+      "title": "Why It Matters",
+      "body": "Photography keeps me observant. It balances technical work with attention, presence, and a different kind of problem solving."
+    }
+  ],
+  "instagram": {
+    "title": "Selected Frames",
+    "description": "Ten favorite frames from wildlife, nature, trails, and open-air exploring.",
+    "profileLabel": "Instagram",
+    "profileUrl": "https://www.instagram.com/clicks.by.samith/",
+    "handle": "@clicks.by.samith",
+    "ctaLabel": "For more work, see Instagram"
+  },
+  "awards": {
+    "title": "Recognition",
+    "description": "A small space for photography awards, mentions, exhibitions, and featured work.",
+    "items": [
+      {
+        "year": "2026",
+        "title": "Wildlife Frame Award",
+        "issuer": "Replace with awarding body",
+        "description": "Placeholder award entry. Replace this with the award name, category, and result."
+      },
+      {
+        "year": "2025",
+        "title": "Nature Photography Feature",
+        "issuer": "Replace with publication or competition",
+        "description": "Placeholder recognition entry for a featured image, finalist listing, or exhibition."
+      },
+      {
+        "year": "2024",
+        "title": "Outdoor Storytelling Mention",
+        "issuer": "Replace with organization",
+        "description": "Placeholder award entry for hiking, travel, wildlife, or landscape photography."
+      },
+      {
+        "year": "2026",
+        "title": "Wildlife Frame Award",
+        "issuer": "Replace with awarding body",
+        "description": "Placeholder award entry. Replace this with the award name, category, and result."
+      },
+      {
+        "year": "2025",
+        "title": "Nature Photography Feature",
+        "issuer": "Replace with publication or competition",
+        "description": "Placeholder recognition entry for a featured image, finalist listing, or exhibition."
+      },
+      {
+        "year": "2024",
+        "title": "Outdoor Storytelling Mention",
+        "issuer": "Replace with organization",
+        "description": "Placeholder award entry for hiking, travel, wildlife, or landscape photography."
+      }
+    ]
+  },
+  "gallery": [
+    {
+      "title": "Wildlife Stillness",
+      "caption": "A quiet wildlife frame from the field.",
+      "image": "/images/photography/photo-01.jpg"
+    },
+    {
+      "title": "Trail Light",
+      "caption": "Morning light crossing a walking track.",
+      "image": "/images/photography/photo-02.jpg"
+    },
+    {
+      "title": "Forest Detail",
+      "caption": "Small textures that reward slow observation.",
+      "image": "/images/photography/photo-03.jpg"
+    },
+    {
+      "title": "Open Ridge",
+      "caption": "A wider view from a day outside.",
+      "image": "/images/photography/photo-04.jpg"
+    },
+    {
+      "title": "Weather Window",
+      "caption": "Clouds, light, and timing doing most of the work.",
+      "image": "/images/photography/photo-05.jpg"
+    },
+    {
+      "title": "Coastal Walk",
+      "caption": "A frame from the edge of land and water.",
+      "image": "/images/photography/photo-06.jpg"
+    },
+    {
+      "title": "Nature Pattern",
+      "caption": "Shapes and repetition found outdoors.",
+      "image": "/images/photography/photo-07.jpg"
+    },
+    {
+      "title": "Hidden Movement",
+      "caption": "A moment caught between patience and luck.",
+      "image": "/images/photography/photo-08.jpg"
+    },
+    {
+      "title": "Track Notes",
+      "caption": "A memory from another trail day.",
+      "image": "/images/photography/photo-09.jpg"
+    },
+    {
+      "title": "Golden Pause",
+      "caption": "A favorite frame saved for the portfolio.",
+      "image": "/images/photography/photo-10.jpg"
+    }
+  ]
+}

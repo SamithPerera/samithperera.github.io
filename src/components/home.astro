@@ -1,0 +1,498 @@
+---
+import { Icon } from 'astro-icon/components';
+import profile from '../data/home.json';
+
+const socials = profile.socials.filter((social) => social.url && social.url !== '#');
+const { hero } = profile;
+const terminalCommands = hero.terminal.commands ?? [];
+---
+
+<section id="home" class="portfolio-hero section-container">
+  <div class="hero-layout">
+    <div class="hero-copy">
+      <p class="hero-eyebrow reveal-content">{hero.eyebrow}</p>
+
+      <div class="intro-card reveal-content" style="animation-delay: 100ms;">
+        <div class="face-balloon" aria-hidden="true">
+          <span class="eye left"></span>
+          <span class="eye right"></span>
+          <span class="smile"></span>
+        </div>
+
+        <h1>
+          <span>{hero.greeting}</span>
+          <strong>{profile.name}</strong>
+        </h1>
+        <p>{profile.role}</p>
+      </div>
+
+      <div class="summary-card reveal-content" style="animation-delay: 200ms;">
+        <p set:html={profile.introHtml} />
+      </div>
+
+      <div class="social-row reveal-content" style="animation-delay: 400ms;" aria-label={hero.socialLabel}>
+        {socials.map((social) => (
+          <a href={social.url} target="_blank" rel="noopener noreferrer" aria-label={social.name} title={social.name}>
+            <Icon name={social.icon} class="h-7 w-7" />
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <div class="terminal-wrap reveal-content" style="animation-delay: 250ms;">
+      <div class="terminal-panel" aria-label={hero.terminal.ariaLabel}>
+        <div class="terminal-titlebar">
+          <div class="traffic-lights" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <span>{hero.terminal.title}</span>
+          <Icon name={hero.terminal.icon} class="h-5 w-5" />
+        </div>
+
+        <div
+          class="terminal-body"
+          data-terminal
+          data-user={hero.terminal.user}
+          data-path={hero.terminal.path}
+          data-loop-delay={hero.terminal.loopDelayMs}
+          data-commands={JSON.stringify(terminalCommands)}
+        >
+          <div class="terminal-history" aria-live="polite"></div>
+          <p class="prompt final"><span>{hero.terminal.user}</span>:<strong>{hero.terminal.path}</strong>$ <em data-command></em><b></b></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  type TerminalCommand = {
+    command: string;
+    output: string[];
+  };
+
+  const terminal = document.querySelector<HTMLElement>('[data-terminal]');
+  const history = terminal?.querySelector<HTMLElement>('.terminal-history');
+  const commandTarget = terminal?.querySelector<HTMLElement>('[data-command]');
+  const cursor = terminal?.querySelector<HTMLElement>('.prompt.final b');
+
+  function wait(ms: number) {
+    return new Promise((resolve) => window.setTimeout(resolve, ms));
+  }
+
+  async function typeText(target: HTMLElement, text: string) {
+    target.textContent = '';
+
+    for (const character of text) {
+      target.textContent += character;
+      await wait(52);
+    }
+  }
+
+  function addPrompt(user: string, path: string, command: string) {
+    const prompt = document.createElement('p');
+    const userText = document.createElement('span');
+    const pathText = document.createElement('strong');
+    const commandText = document.createElement('em');
+
+    prompt.className = 'prompt previous';
+    userText.textContent = user;
+    pathText.textContent = path;
+    commandText.textContent = command;
+
+    prompt.append(userText, ':', pathText, '$ ', commandText);
+    history?.append(prompt);
+  }
+
+  function addOutputLine(line: string, index: number) {
+    const output = document.createElement('p');
+    output.className = index === 0 ? 'terminal-line lead' : 'terminal-line';
+    output.textContent = line;
+    history?.append(output);
+  }
+
+  async function runTerminal() {
+    if (!terminal || !history || !commandTarget) return;
+
+    const user = terminal.dataset.user ?? '';
+    const path = terminal.dataset.path ?? '~';
+    const loopDelay = Number(terminal.dataset.loopDelay ?? 1600);
+    const commands = JSON.parse(terminal.dataset.commands ?? '[]') as TerminalCommand[];
+
+    if (!commands.length) return;
+
+    while (true) {
+      history.innerHTML = '';
+
+      for (const item of commands) {
+        cursor?.classList.add('typing');
+        await typeText(commandTarget, item.command);
+        await wait(360);
+
+        addPrompt(user, path, item.command);
+        commandTarget.textContent = '';
+        cursor?.classList.remove('typing');
+
+        for (const [index, line] of item.output.entries()) {
+          await wait(index === 0 ? 260 : 190);
+          addOutputLine(line, index);
+        }
+
+        await wait(760);
+      }
+
+      await wait(loopDelay);
+    }
+  }
+
+  runTerminal();
+</script>
+
+<style>
+  .portfolio-hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+  }
+
+  .hero-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(300px, 0.78fr);
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .hero-copy {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    color: var(--color-accent);
+    font-family: var(--font-heading);
+    font-size: clamp(0.8rem, 1.4vw, 0.95rem);
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .intro-card {
+    position: relative;
+    min-height: 14rem;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 14%, transparent);
+    border-radius: 0.55rem;
+    background: color-mix(in srgb, var(--color-panel) 68%, transparent);
+    box-shadow: 0 24px 80px color-mix(in srgb, black 34%, transparent);
+    padding: clamp(1.35rem, 3vw, 2rem);
+    overflow: visible;
+  }
+
+  .intro-card h1 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.28rem;
+    color: var(--color-maintext);
+    font-family: var(--font-heading);
+    font-size: clamp(2.65rem, 5.1vw, 4.45rem);
+    font-weight: 800;
+    line-height: 0.98;
+    letter-spacing: 0;
+  }
+
+  .intro-card h1 strong {
+    width: min-content;
+    min-width: 100%;
+    background: linear-gradient(90deg, #5b7cfa 0%, #16c8f8 58%, #2dd4bf 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .intro-card p {
+    margin-top: 1.05rem;
+    color: var(--color-subtext);
+    font-size: clamp(1.05rem, 2vw, 1.45rem);
+  }
+
+  .face-balloon {
+    position: absolute;
+    right: clamp(0.9rem, 4vw, 2.2rem);
+    top: -3.1rem;
+    width: clamp(5.8rem, 9vw, 7.4rem);
+    aspect-ratio: 1;
+    border: 5px solid #050505;
+    border-radius: 52% 48% 50% 50%;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent) 12%, transparent);
+    transform: rotate(-2deg);
+  }
+
+  .face-balloon::after {
+    content: '';
+    position: absolute;
+    left: 48%;
+    top: 94%;
+    width: 3px;
+    height: 3.6rem;
+    background: #151515;
+    transform: rotate(1deg);
+    transform-origin: top;
+  }
+
+  .eye {
+    position: absolute;
+    top: 35%;
+    width: 0.42rem;
+    height: 0.55rem;
+    border-radius: 999px;
+    background: #050505;
+  }
+
+  .eye.left {
+    left: 34%;
+  }
+
+  .eye.right {
+    right: 31%;
+  }
+
+  .smile {
+    position: absolute;
+    left: 35%;
+    top: 54%;
+    width: 34%;
+    height: 20%;
+    border-bottom: 4px solid #050505;
+    border-radius: 0 0 999px 999px;
+    transform: rotate(5deg);
+  }
+
+  .summary-card {
+    width: min(100%, 32rem);
+    margin-top: 1.5rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid color-mix(in srgb, var(--color-maintext) 8%, transparent);
+    border-radius: 0.5rem;
+    background: color-mix(in srgb, var(--color-panel) 74%, transparent);
+  }
+
+  .summary-card p {
+    color: var(--color-subtext);
+    font-size: 1rem;
+    line-height: 1.68;
+  }
+
+  .social-row {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.45rem;
+  }
+
+  .social-row a {
+    color: color-mix(in srgb, var(--color-subtext) 74%, transparent);
+    transition:
+      transform 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .social-row a:hover {
+    color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+
+  .terminal-wrap {
+    width: min(100%, 31rem);
+    justify-self: center;
+  }
+
+  .terminal-panel {
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 24%, transparent);
+    border-radius: 0.55rem;
+    background: #050914;
+    box-shadow:
+      0 30px 90px color-mix(in srgb, black 42%, transparent),
+      inset 0 0 0 1px color-mix(in srgb, white 5%, transparent);
+  }
+
+  .terminal-titlebar {
+    min-height: 2.7rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0 0.9rem;
+    color: #a9b7d7;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 16%, transparent);
+    background: #111a2e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.85rem;
+  }
+
+  .traffic-lights {
+    display: flex;
+    gap: 0.45rem;
+  }
+
+  .traffic-lights span {
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 999px;
+  }
+
+  .traffic-lights span:nth-child(1) {
+    background: #ff5f57;
+  }
+
+  .traffic-lights span:nth-child(2) {
+    background: #ffbd2e;
+  }
+
+  .traffic-lights span:nth-child(3) {
+    background: #28c840;
+  }
+
+  .terminal-body {
+    min-height: 20rem;
+    max-height: 25rem;
+    overflow: hidden;
+    padding: 1.1rem;
+    color: #d5e5ff;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: clamp(0.76rem, 1.25vw, 0.94rem);
+    line-height: 1.7;
+  }
+
+  .prompt {
+    color: #d7e5ff;
+    overflow-wrap: anywhere;
+  }
+
+  .prompt span {
+    color: #4ade80;
+  }
+
+  .prompt strong {
+    color: #38bdf8;
+    font-weight: 700;
+  }
+
+  .prompt em {
+    display: inline-block;
+    color: #f8fafc;
+    font-style: normal;
+    vertical-align: bottom;
+  }
+
+  .terminal-history {
+    max-width: 29rem;
+  }
+
+  .terminal-line {
+    color: #9fb4d8;
+    margin: 0.55rem 0;
+    animation: outputLine 0.28s ease forwards;
+  }
+
+  .terminal-line.lead {
+    color: #ffffff;
+    font-weight: 800;
+  }
+
+  .prompt.final {
+    margin-top: 1.1rem;
+  }
+
+  .prompt.final b {
+    display: inline-block;
+    width: 0.55rem;
+    height: 1rem;
+    margin-left: 0.2rem;
+    background: #f8fafc;
+    vertical-align: -0.15rem;
+    animation: blink 0.8s step-end infinite;
+  }
+
+  @keyframes outputLine {
+    from {
+      opacity: 0;
+      transform: translateY(0.35rem);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .reveal-content {
+    opacity: 0;
+    transform: translateY(22px);
+    animation: revealIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  @keyframes revealIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .hero-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .terminal-wrap {
+      width: min(100%, 38rem);
+      margin: 1rem auto 0;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .portfolio-hero {
+      padding-top: 6.75rem;
+    }
+
+    .intro-card {
+      min-height: 13rem;
+    }
+
+    .intro-card h1 {
+      font-size: clamp(2.45rem, 12vw, 3.6rem);
+    }
+
+    .face-balloon {
+      width: 5.9rem;
+      top: -2.4rem;
+      border-width: 4px;
+    }
+
+    .face-balloon::after {
+      height: 2.4rem;
+    }
+
+    .terminal-body {
+      min-height: 25rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .intro-card {
+      padding-top: 4.7rem;
+    }
+
+  }
+</style>
