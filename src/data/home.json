@@ -5,8 +5,8 @@
   "phone": "+64 20 4159 8309",
   "email": "samithchandula@gmail.com",
   "photoUrl": "",
-  "intro": "DevOps engineer with 10+ years of experience building resilient cloud-native platforms, Kubernetes environments, observability systems, and CI/CD automation across telecom, enterprise, and digital industries.",
-  "introHtml": "DevOps engineer with <span class='text-maintext font-bold'>10+ years</span> of experience building resilient cloud-native platforms, Kubernetes environments, observability systems, and CI/CD automation across telecom, enterprise, and digital industries.",
+  "intro": "DevOps engineer with 10+ years of experience building resilient cloud-native platforms, Kubernetes environments, observability systems, and CI/CD automation across telecom, enterprise, and digital industries. Master of Science in Information Technology from Cardiff Metropolitan University.",
+  "introHtml": "DevOps engineer with <span class='text-maintext font-bold'>10+ years</span> of experience building resilient cloud-native platforms, Kubernetes environments, observability systems, and CI/CD automation across telecom, enterprise, and digital industries. Master of Science in Information Technology from Cardiff Metropolitan University.",
   "webpageTitle": "Samith Perera | DevOps Platform SRE Engineer",
   "resumeUrl": "/samith-perera-cv.pdf",
   "hero": {
@@ -26,11 +26,12 @@
           "output": [
             "Samith Perera",
             "DevOps, Platform and SRE engineer based in Hamilton, New Zealand.",
+            "MSc in IT from Cardiff Metropolitan University",
             "I build Kubernetes platforms, automate delivery pipelines, and make systems observable before they become mysterious."
           ]
         },
         {
-          "command": "mycerts",
+          "command": "get-certs",
           "output": [
             "Kubernetes: CKA, CKAD, CKS",
             "Cloud: AWS Certified Solutions Architect Associate, AWS Certified SysOps Administrator Associate",
@@ -38,11 +39,11 @@
           ]
         },
         {
-          "command": "myjobs",
+          "command": "tail myjobs.log",
           "output": [
-            "Platform engineering across telecom, enterprise, and digital environments.",
-            "Recent focus: Kubernetes operations, CI/CD automation, observability, cloud infrastructure, and reliability practices.",
-            "Toolbox: AWS, GCP, Terraform, Ansible, Datadog, ELK, Splunk, Prometheus, Grafana, Jenkins, and GitHub Actions."
+            "Senior DevOps Engineer at Current role",
+            "DevOps Engineer at Netvalue",
+            "Senior DevOps Engineer at John Wiley & Sons"
           ]
         }
       ]

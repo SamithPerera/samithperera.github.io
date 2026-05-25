@@ -18,7 +18,7 @@ These sports also reinforce the importance of teamwork. In cricket, for example,
 
 While the idea of video games might seem like just fun and games, I’ve learned that they offer incredible opportunities to refine mental agility and decision-making skills. Strategic games, in particular, require a level of focus and foresight. Whether it’s analyzing the best tactics in Valorant or working with teammates in Call of Duty, video games help me practice not only split-second decisions but also collaboration under pressure. The skills I’ve honed in the gaming world quick reflexes, strategic thinking, and teamwork, especially when you work remotely, have directly transferred to my personal and professional life, allowing me to stay sharp and focused when handling complex situations.
 
-Download the Medium App
+
 On the other side, my passion for wildlife photography has taught me the art of patience and mindfulness. There’s a unique sense of peace that comes with spending hours in the wild, waiting for that perfect shot without knowing the next move of the subject. It’s not just about capturing images it’s about learning to adopt stillness and observe the world around you. The patience required to wait for the right moment and the focus needed to capture it have significantly impacted my ability to stay calm and collected in everyday life.
 
 Photography also teaches you to appreciate the beauty in simplicity. Taking the time to set up the perfect shot, paying attention to details, and finding joy in the process these practices are a powerful reminder to slow down and enjoy life’s quiet moments, even when things around me get hectic.
