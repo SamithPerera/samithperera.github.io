@@ -111,7 +111,9 @@ const terminalCommands = hero.terminal.commands ?? [];
     output.className = index === 0 ? 'terminal-line lead' : 'terminal-line';
     output.textContent = line;
     history?.append(output);
-    terminal?.scrollTop = terminal?.scrollHeight ?? 0;
+    if (terminal) {
+      terminal.scrollTop = terminal.scrollHeight ?? 0;
+    }
   }
 
   async function runTerminal() {
