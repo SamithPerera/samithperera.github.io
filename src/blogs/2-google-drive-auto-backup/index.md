@@ -1,8 +1,8 @@
 ---
 title: "How to Protect Your Non-Regenerative Documents and Files by Auto-Syncing Them to Google Drive"
 date: "2024-09-05"
-category: "DevOps"
-excerpt: "How to Protect Your Non-Regenerative Documents and Files by Auto-Syncing Them to Google Drive"
+category: "Other"
+excerpt: "Some files, once lost, are gone forever. In this post, we'll show you how to keep those irreplaceable documents safe by setting up auto-sync with Google Drive."
 readTime: "4 min read"
 ---
 
@@ -14,7 +14,7 @@ In this guide, I’ll show you how to automatically sync important files to Goog
 
 ---
 
-![Install Google Drive Desktop](./cover.png)
+![Cover](./cover.png)
 
 ## Why Auto-Sync Matters
 
