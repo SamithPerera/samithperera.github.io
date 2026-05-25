@@ -157,7 +157,7 @@ const terminalCommands = hero.terminal.commands ?? [];
     flex-direction: column;
     justify-content: center;
     padding-top: 8rem;
-    padding-bottom: 4rem;
+    padding-bottom: 1rem;
   }
 
   .hero-layout {
@@ -385,9 +385,13 @@ const terminalCommands = hero.terminal.commands ?? [];
 
   .prompt em {
     display: inline-block;
-    color: #f8fafc;
+    color: #fbbf24;
     font-style: normal;
     vertical-align: bottom;
+  }
+
+  .prompt.previous em {
+    color: #fbbf24;
   }
 
   .terminal-history {
