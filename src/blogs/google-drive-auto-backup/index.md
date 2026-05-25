@@ -3,7 +3,7 @@ title: "How to Protect Your Non-Regenerative Documents and Files by Auto-Syncing
 date: "2024-09-05"
 category: "DevOps"
 excerpt: "How to Protect Your Non-Regenerative Documents and Files by Auto-Syncing Them to Google Drive"
-readTime: "1 min read"
+readTime: "4 min read"
 ---
 
 We all have files that are impossible or extremely painful to recreate — personal photos, project documents, source code, invoices, certificates, notes, or years of collected data.
