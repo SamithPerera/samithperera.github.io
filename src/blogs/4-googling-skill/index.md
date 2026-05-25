@@ -1,8 +1,8 @@
 ---
 title: "Googling: A Must Have Skill for IT Folks"
 date: "2025-02-05"
-category: "DevOps"
-excerpt: "Googling: A Must Have Skill for IT Folks"
+category: "Other"
+excerpt: "Googling is an underrated professional skill, learn how to search smarter and solve problems faster using the right techniques and mindset."
 readTime: "4 min read"
 ---
 
@@ -12,7 +12,7 @@ This skill, often underappreciated, should be considered an essential part of yo
 
 ---
 
-![Install Google Drive Desktop](./1.png)
+![Cover](./1.png)
 
 ## Why Googling is a Skill
 
@@ -49,7 +49,7 @@ The best solution might be buried in outdated posts. Always look for answers mar
 
 example of an accepted answer in StackOverflow:
 
-![Install Google Drive Desktop](./2.png)
+![Accepted answers](./2.png)
 
 #### 6. Leverage Search Operators
 Google search operators like quotes for exact matches or the minus sign to exclude terms are powerful tools to refine your results. For example, searching for “how to fix attribute error in Python” (with quotes) ensures that you only get results that contain the exact phrase, reducing irrelevant results.

@@ -2,11 +2,11 @@
 title: "Overcoming Deployment Challenges with Innovation"
 date: "2025-01-10"
 category: "DevOps"
-excerpt: "Overcoming Deployment Challenges with Innovation"
+excerpt: "Sometimes you just can't wait for the perfect solution, here's how we hacked our way around an outdated monitoring tool to keep our pipeline running smoothly."
 readTime: "2 min read"
 ---
 
-![Install Google Drive Desktop](./1.png)
+![Cover](./1.png)
 
 
 In a recent project I worked on, we implemented a robust CI/CD pipeline. As part of this deployment process, we wanted to automatically suppress alerts during the deployment period to ensure that our monitoring system wouldn’t interfere with the updates. However, we faced a considerable challenge: our monitoring tool, ICINGA, was running on an older version that lacked the essential API functionality needed to automate alert suppression. Due to various constraints, upgrading ICINGA wasn’t a feasible option at that time. However, we upgraded to a newer version a few months later.

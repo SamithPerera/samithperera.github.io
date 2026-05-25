@@ -2,7 +2,7 @@
 title: "Use NGINX as a database proxy"
 date: "2024-06-05"
 category: "DevOps"
-excerpt: "A sample post about how to use NGINX as a database proxy."
+excerpt: "A post about how to use NGINX as a database proxy."
 readTime: "1 min read"
 ---
 
