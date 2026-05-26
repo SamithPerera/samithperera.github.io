@@ -60,7 +60,7 @@ const terminalCommands = hero.terminal.commands ?? [];
           data-commands={JSON.stringify(terminalCommands)}
         >
           <div class="terminal-history" aria-live="polite"></div>
-          <p class="prompt final"><span>{hero.terminal.user}</span>:<strong>{hero.terminal.path}</strong>$ <em data-command></em><b></b></p>
+          <p class="prompt final"><span>{hero.terminal.user}</span>:<strong>{hero.terminal.path}</strong>$ <em class="prompt-command" data-command></em><b></b></p>
         </div>
       </div>
     </div>
@@ -98,6 +98,7 @@ const terminalCommands = hero.terminal.commands ?? [];
     const commandText = document.createElement('em');
 
     prompt.className = 'prompt previous';
+    commandText.className = 'prompt-command';
     userText.textContent = user;
     pathText.textContent = path;
     commandText.textContent = command;
@@ -109,7 +110,35 @@ const terminalCommands = hero.terminal.commands ?? [];
   function addOutputLine(line: string, index: number) {
     const output = document.createElement('p');
     output.className = index === 0 ? 'terminal-line lead' : 'terminal-line';
-    output.textContent = line;
+
+    const separatorIndex = line.indexOf(': ');
+    if (separatorIndex > -1) {
+      const label = line.slice(0, separatorIndex);
+      const values = line
+        .slice(separatorIndex + 2)
+        .split(',')
+        .map((value) => value.trim())
+        .filter(Boolean);
+      const labelEl = document.createElement('span');
+      const valuesEl = document.createElement('span');
+
+      output.classList.add('terminal-line--group');
+      labelEl.className = 'terminal-label';
+      valuesEl.className = 'terminal-values';
+      labelEl.textContent = label;
+
+      for (const value of values) {
+        const valueEl = document.createElement('span');
+        valueEl.className = 'terminal-chip';
+        valueEl.textContent = value;
+        valuesEl.append(valueEl);
+      }
+
+      output.append(labelEl, valuesEl);
+    } else {
+      output.textContent = line;
+    }
+
     history?.append(output);
     if (terminal) {
       terminal.scrollTop = terminal.scrollHeight ?? 0;
@@ -160,7 +189,7 @@ const terminalCommands = hero.terminal.commands ?? [];
     flex-direction: column;
     justify-content: center;
     padding-top: 8rem;
-    padding-bottom: 1rem;
+    padding-bottom: 0rem;
   }
 
   .hero-layout {
@@ -378,7 +407,16 @@ const terminalCommands = hero.terminal.commands ?? [];
     overflow-wrap: anywhere;
   }
 
+  .terminal-body :global(.prompt) {
+    color: #d7e5ff;
+    overflow-wrap: anywhere;
+  }
+
   .prompt span {
+    color: #4ade80;
+  }
+
+  .terminal-body :global(.prompt span) {
     color: #4ade80;
   }
 
@@ -387,19 +425,34 @@ const terminalCommands = hero.terminal.commands ?? [];
     font-weight: 700;
   }
 
-  .prompt em {
+  .terminal-body :global(.prompt strong) {
+    color: #38bdf8;
+    font-weight: 700;
+  }
+
+  .prompt .prompt-command,
+  .terminal-body :global(.prompt .prompt-command) {
     display: inline-block;
-    color: #fbbf24 !important;
+    color: #facc15;
     font-style: normal;
+    font-weight: 800;
+    text-shadow: 0 0 14px rgba(250, 204, 21, 0.28);
     vertical-align: bottom;
   }
 
-  .prompt.previous em {
-    color: #fbbf24 !important;
+  .prompt.previous {
+    color: #d7e5ff;
   }
 
-  .prompt.final em {
-    color: #fbbf24 !important;
+  .terminal-body :global(.prompt.previous) {
+    color: #d7e5ff;
+  }
+
+  .prompt.previous .prompt-command,
+  .prompt.final .prompt-command,
+  .terminal-body :global(.prompt.previous .prompt-command),
+  .terminal-body :global(.prompt.final .prompt-command) {
+    color: #facc15;
   }
 
   .terminal-history {
@@ -407,14 +460,111 @@ const terminalCommands = hero.terminal.commands ?? [];
   }
 
   .terminal-line {
-    color: #9fb4d8;
+    color: #d5e5ff;
     margin: 0.55rem 0;
+    padding: 0.52rem 0.62rem;
+    border-radius: 0.45rem;
     animation: outputLine 0.28s ease forwards;
+    background: rgba(15, 23, 42, 0.68);
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    border-left: 2px solid rgba(14, 165, 233, 0.42);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  }
+
+  .terminal-body :global(.terminal-line) {
+    color: #d5e5ff;
+    margin: 0.55rem 0;
+    padding: 0.52rem 0.62rem;
+    border-radius: 0.45rem;
+    animation: outputLine 0.28s ease forwards;
+    background: rgba(15, 23, 42, 0.68);
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    border-left: 2px solid rgba(14, 165, 233, 0.42);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
   }
 
   .terminal-line.lead {
     color: #ffffff;
+    font-weight: 700;
+    background: linear-gradient(90deg, rgba(14, 165, 233, 0.18) 0%, rgba(45, 212, 191, 0.08) 100%);
+    border-color: rgba(14, 165, 233, 0.22);
+    border-left: 3px solid #22d3ee;
+  }
+
+  .terminal-body :global(.terminal-line.lead) {
+    color: #ffffff;
+    font-weight: 700;
+    background: linear-gradient(90deg, rgba(14, 165, 233, 0.18) 0%, rgba(45, 212, 191, 0.08) 100%);
+    border-color: rgba(14, 165, 233, 0.22);
+    border-left: 3px solid #22d3ee;
+  }
+
+  .terminal-line--group {
+    display: grid;
+    grid-template-columns: minmax(5.8rem, 0.38fr) 1fr;
+    align-items: start;
+    gap: 0.55rem;
+  }
+
+  .terminal-body :global(.terminal-line--group) {
+    display: grid;
+    grid-template-columns: minmax(5.8rem, 0.38fr) 1fr;
+    align-items: start;
+    gap: 0.55rem;
+  }
+
+  .terminal-label {
+    color: #67e8f9;
+    font-size: 0.78em;
     font-weight: 800;
+    letter-spacing: 0.08em;
+    line-height: 1.8;
+    text-transform: uppercase;
+  }
+
+  .terminal-body :global(.terminal-label) {
+    color: #67e8f9;
+    font-size: 0.78em;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    line-height: 1.8;
+    text-transform: uppercase;
+  }
+
+  .terminal-values {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.38rem;
+    min-width: 0;
+  }
+
+  .terminal-body :global(.terminal-values) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.38rem;
+    min-width: 0;
+  }
+
+  .terminal-chip {
+    max-width: 100%;
+    padding: 0.12rem 0.5rem;
+    border: 1px solid rgba(250, 204, 21, 0.22);
+    border-radius: 999px;
+    color: #f8fafc;
+    background: rgba(250, 204, 21, 0.08);
+    overflow-wrap: anywhere;
+    line-height: 1.55;
+  }
+
+  .terminal-body :global(.terminal-chip) {
+    max-width: 100%;
+    padding: 0.12rem 0.5rem;
+    border: 1px solid rgba(250, 204, 21, 0.22);
+    border-radius: 999px;
+    color: #f8fafc;
+    background: rgba(250, 204, 21, 0.08);
+    overflow-wrap: anywhere;
+    line-height: 1.55;
   }
 
   .prompt.final {
@@ -498,6 +648,16 @@ const terminalCommands = hero.terminal.commands ?? [];
 
     .terminal-body {
       min-height: 25rem;
+    }
+
+    .terminal-line--group {
+      grid-template-columns: 1fr;
+      gap: 0.35rem;
+    }
+
+    .terminal-body :global(.terminal-line--group) {
+      grid-template-columns: 1fr;
+      gap: 0.35rem;
     }
   }
 
