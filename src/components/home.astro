@@ -114,27 +114,17 @@ const terminalCommands = hero.terminal.commands ?? [];
     const separatorIndex = line.indexOf(': ');
     if (separatorIndex > -1) {
       const label = line.slice(0, separatorIndex);
-      const values = line
-        .slice(separatorIndex + 2)
-        .split(',')
-        .map((value) => value.trim())
-        .filter(Boolean);
+      const value = line.slice(separatorIndex + 2);
       const labelEl = document.createElement('span');
-      const valuesEl = document.createElement('span');
+      const valueEl = document.createElement('span');
 
-      output.classList.add('terminal-line--group');
+      output.classList.add('terminal-line--key-value');
       labelEl.className = 'terminal-label';
-      valuesEl.className = 'terminal-values';
+      valueEl.className = 'terminal-value';
       labelEl.textContent = label;
+      valueEl.textContent = value;
 
-      for (const value of values) {
-        const valueEl = document.createElement('span');
-        valueEl.className = 'terminal-chip';
-        valueEl.textContent = value;
-        valuesEl.append(valueEl);
-      }
-
-      output.append(labelEl, valuesEl);
+      output.append(labelEl, ': ', valueEl);
     } else {
       output.textContent = line;
     }
@@ -461,110 +451,52 @@ const terminalCommands = hero.terminal.commands ?? [];
 
   .terminal-line {
     color: #d5e5ff;
-    margin: 0.55rem 0;
-    padding: 0.52rem 0.62rem;
-    border-radius: 0.45rem;
+    margin: 0.28rem 0;
+    padding: 0;
     animation: outputLine 0.28s ease forwards;
-    background: rgba(15, 23, 42, 0.68);
-    border: 1px solid rgba(148, 163, 184, 0.12);
-    border-left: 2px solid rgba(14, 165, 233, 0.42);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
   }
 
   .terminal-body :global(.terminal-line) {
     color: #d5e5ff;
-    margin: 0.55rem 0;
-    padding: 0.52rem 0.62rem;
-    border-radius: 0.45rem;
+    margin: 0.28rem 0;
+    padding: 0;
     animation: outputLine 0.28s ease forwards;
-    background: rgba(15, 23, 42, 0.68);
-    border: 1px solid rgba(148, 163, 184, 0.12);
-    border-left: 2px solid rgba(14, 165, 233, 0.42);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
   }
 
   .terminal-line.lead {
-    color: #ffffff;
+    color: #f8fafc;
     font-weight: 700;
-    background: linear-gradient(90deg, rgba(14, 165, 233, 0.18) 0%, rgba(45, 212, 191, 0.08) 100%);
-    border-color: rgba(14, 165, 233, 0.22);
-    border-left: 3px solid #22d3ee;
   }
 
   .terminal-body :global(.terminal-line.lead) {
-    color: #ffffff;
+    color: #f8fafc;
     font-weight: 700;
-    background: linear-gradient(90deg, rgba(14, 165, 233, 0.18) 0%, rgba(45, 212, 191, 0.08) 100%);
-    border-color: rgba(14, 165, 233, 0.22);
-    border-left: 3px solid #22d3ee;
   }
 
-  .terminal-line--group {
-    display: grid;
-    grid-template-columns: minmax(5.8rem, 0.38fr) 1fr;
-    align-items: start;
-    gap: 0.55rem;
+  .terminal-line--key-value {
+    color: #cbd5e1;
   }
 
-  .terminal-body :global(.terminal-line--group) {
-    display: grid;
-    grid-template-columns: minmax(5.8rem, 0.38fr) 1fr;
-    align-items: start;
-    gap: 0.55rem;
+  .terminal-body :global(.terminal-line--key-value) {
+    color: #cbd5e1;
   }
 
   .terminal-label {
-    color: #67e8f9;
-    font-size: 0.78em;
+    color: #38bdf8;
     font-weight: 800;
-    letter-spacing: 0.08em;
-    line-height: 1.8;
-    text-transform: uppercase;
   }
 
   .terminal-body :global(.terminal-label) {
-    color: #67e8f9;
-    font-size: 0.78em;
+    color: #38bdf8;
     font-weight: 800;
-    letter-spacing: 0.08em;
-    line-height: 1.8;
-    text-transform: uppercase;
   }
 
-  .terminal-values {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.38rem;
-    min-width: 0;
+  .terminal-value {
+    color: #e2e8f0;
   }
 
-  .terminal-body :global(.terminal-values) {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.38rem;
-    min-width: 0;
-  }
-
-  .terminal-chip {
-    max-width: 100%;
-    padding: 0.12rem 0.5rem;
-    border: 1px solid rgba(250, 204, 21, 0.22);
-    border-radius: 999px;
-    color: #f8fafc;
-    background: rgba(250, 204, 21, 0.08);
-    overflow-wrap: anywhere;
-    line-height: 1.55;
-  }
-
-  .terminal-body :global(.terminal-chip) {
-    max-width: 100%;
-    padding: 0.12rem 0.5rem;
-    border: 1px solid rgba(250, 204, 21, 0.22);
-    border-radius: 999px;
-    color: #f8fafc;
-    background: rgba(250, 204, 21, 0.08);
-    overflow-wrap: anywhere;
-    line-height: 1.55;
+  .terminal-body :global(.terminal-value) {
+    color: #e2e8f0;
   }
 
   .prompt.final {
@@ -650,15 +582,6 @@ const terminalCommands = hero.terminal.commands ?? [];
       min-height: 25rem;
     }
 
-    .terminal-line--group {
-      grid-template-columns: 1fr;
-      gap: 0.35rem;
-    }
-
-    .terminal-body :global(.terminal-line--group) {
-      grid-template-columns: 1fr;
-      gap: 0.35rem;
-    }
   }
 
   @media (max-width: 480px) {
