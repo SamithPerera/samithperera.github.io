@@ -413,12 +413,18 @@ const terminalCommands = hero.terminal.commands ?? [];
   .terminal-line {
     color: #d5e5ff;
     margin: 0.55rem 0;
+    padding: 0.45rem 0.55rem;
+    border-radius: 0.3rem;
     animation: outputLine 0.28s ease forwards;
+    background: rgba(14, 165, 233, 0.06);
+    border-left: 2px solid rgba(14, 165, 233, 0.3);
   }
 
   .terminal-line.lead {
     color: #ffffff;
-    font-weight: 800;
+    font-weight: 700;
+    background: linear-gradient(90deg, rgba(14, 165, 233, 0.12) 0%, rgba(14, 165, 233, 0.04) 100%);
+    border-left: 3px solid #0ea5e9;
   }
 
   .prompt.final {
