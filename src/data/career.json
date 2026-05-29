@@ -12,7 +12,7 @@
     "role": "DevOps Engineer",
     "period": "Sep 2023 - Nov 2025",
     "type": "Full time",
-    "description": "Owned Datadog integration, AWS serverless monitoring, Kubernetes hosting, and CI/CD automation, including reducing legacy deployment time from about 3 hours to 15 minutes per node.",
+    "description": "Automated a legacy CI/CD upgrade process, reducing deployment time from 3 hours to 15 minutes per node in a 6-node cluster. Collaborated on a bioinformatics project for a U.S.-based client, managing AWS infrastructure and CI/CD pipelines with Terraform and GitHub Actions. Designed and maintained scalable cloud infrastructure to improve system reliability and developer productivity. Maintained an on-prem Kubernetes cluster for GitLab CI runners. Directed Datadog implementation, enabling real-time monitoring of AWS serverless applications using Firehose and CloudWatch metric streams.",
     "skills": ["Datadog", "AWS", "Kubernetes", "Terraform", "GitHub Actions"]
   },
   {
@@ -20,7 +20,7 @@
     "role": "Senior DevOps Engineer",
     "period": "Apr 2023 - Oct 2023",
     "type": "Full time",
-    "description": "Managed enterprise observability and logging platforms, including ELK and Splunk Cloud migration for around 200 TB of logs across 300+ applications.",
+    "description": "Led migration of Logstash pipelines from Elasticsearch to Splunk and implemented RBAC for secure user access. Migrated Elasticsearch dashboards to Splunk and automated Splunk component creation with Python. Supported a BigPanda to Splunk ITSI migration, moving monitoring integrations and event correlations into Splunk correlation rules. Configured Splunk ITSI to create incidents and escalation policies for PagerDuty and ServiceNow.",
     "skills": ["ELK", "Splunk", "Cloud", "Logging", "Operations"]
   },
   {
@@ -28,7 +28,7 @@
     "role": "DevOps Engineer",
     "period": "Aug 2021 - Apr 2023",
     "type": "Full time",
-    "description": "Managed enterprise observability and logging platforms, including ELK and Splunk Cloud migration for around 200 TB of logs across 300+ applications.",
+    "description": "Led multiple platform and migration initiatives, including ELK to ECK migration on Kubernetes with Helm, Terraform, and ArgoCD. Migrated a legacy AGS application stack to AWS with Jenkins-based CI/CD pipelines and Infrastructure as Code. Built an automated, scalable Jenkins-based Gatling load testing workflow for performance teams.",
     "skills": ["ELK", "Splunk", "Cloud", "Logging", "Operations"]
   },
   {
@@ -36,7 +36,7 @@
     "role": "Senior Cloud Operation Engineer",
     "period": "Jan 2021 - Aug 2021",
     "type": "Full time",
-    "description": "Administered Kubernetes clusters, GCP production infrastructure, monitoring, alerting, and infrastructure automation using Ansible and Terraform.",
+    "description": "Led Kubernetes upgrade research and production rollouts, managed GCP and AWS deployments, implemented observability with Stackdriver/Prometheus/Grafana, and automated configuration and infrastructure provisioning with Ansible and Terraform.",
     "skills": ["GCP", "Prometheus", "Grafana", "Ansible", "Terraform"]
   },
   {
@@ -44,7 +44,7 @@
     "role": "Cloud Operation Engineer",
     "period": "Jun 2020 - Jan 2021",
     "type": "Full time",
-    "description": "Administered Kubernetes clusters, GCP production infrastructure, monitoring, alerting, and infrastructure automation using Ansible and Terraform.",
+    "description": "Supported Kubernetes upgrades, cloud deployment automation, monitoring and alerting, configuration management with Ansible, shell scripting, and Terraform provisioning for AWS and GCP production systems.",
     "skills": ["GCP", "Prometheus", "Grafana", "Ansible", "Terraform"]
   },
   {
@@ -52,7 +52,7 @@
     "role": "DevOps Engineer",
     "period": "Jun 2019 - Jun 2020",
     "type": "Full time",
-    "description": "Maintained Node.js and .NET applications, managed 30+ on-prem servers, configured Zabbix monitoring, and delivered CI/CD pipelines for multiple projects.",
+    "description": "Hosted Node.js and .NET applications, automated database backups, secured monitoring with Zabbix, managed AWS infrastructure, containerized apps with Docker, and built CI/CD pipelines and deployment documentation.",
     "skills": ["AWS", "Docker", "Zabbix", "CI/CD", "Servers"]
   },
   {
@@ -68,15 +68,15 @@
     "role": "Interactive Media Developer",
     "period": "Jan 2016 - Sep 2018",
     "type": "Full time",
-    "description": "Developed and maintained web applications with Node.js and PHP, built Jenkins pipelines, and created web animation and interactive media for clients.",
+    "description": "Developed and maintained web applications with Node.js and PHP, built Jenkins pipelines, and created web animation and interactive media for clients. Build Google Ads using Goolge Animate and HTML5 Canvas.",
     "skills": ["Node.js", "PHP", "Jenkins", "Web Apps", "Automation"]
   },
   {
     "company": "eBEYONDS",
-    "role": "Intern",
+    "role": "Internship - Interactive Media Developer",
     "period": "Sep 2015 - Jan 2016",
     "type": "Full time",
-    "description": "Developed and maintained web applications with Node.js and PHP, built Jenkins pipelines, and created web animation and interactive media for clients.",
+    "description": "Created web animation and interactive media for clients.",
     "skills": ["Node.js", "PHP", "Jenkins", "Web Apps", "Automation"]
   }
 ]

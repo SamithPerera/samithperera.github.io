@@ -5,8 +5,9 @@
   "phone": "+64 20 4159 8309",
   "email": "samithchandula@gmail.com",
   "photoUrl": "",
-  "intro": "DevOps engineer with 10+ years of experience building resilient cloud-native platforms, Kubernetes environments, observability systems, and CI/CD automation across telecom, enterprise, and digital industries. Master of Science in Information Technology from Cardiff Metropolitan University.",
-  "introHtml": "DevOps engineer with <span class='text-maintext font-bold'>10+ years</span> of experience building resilient cloud-native platforms, Kubernetes environments, observability systems, and CI/CD automation across telecom, enterprise, and digital industries. Master of Science in Information Technology from Cardiff Metropolitan University.",
+  "intro": "DevOps professional with 10+ years of experience building resilient cloud platforms, automation, and observability. I’m committed to being a “purple sheep” among others, constantly learning, innovating, and delivering unique value.",
+  "introHtml": "DevOps professional with <span class='text-maintext font-bold'>10+ years</span> of experience building resilient cloud platforms, automation, and observability. I’m committed to being a “purple sheep” among others, constantly learning, innovating, and delivering unique value.",
+
   "webpageTitle": "Samith Perera | DevOps Platform SRE Engineer",
   "resumeUrl": "/samith-perera-cv.pdf",
   "hero": {
@@ -27,7 +28,7 @@
             "Samith Perera",
             "DevOps, Platform and SRE engineer based in Hamilton, New Zealand.",
             "MSc in IT from Cardiff Metropolitan University",
-            "I build Kubernetes platforms, automate delivery pipelines, and make systems observable before they become mysterious."
+            "I’m committed to being a “purple sheep” learn, innovate, and deliver distinct value in every project."
           ]
         },
         {
