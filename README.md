@@ -5,7 +5,15 @@ Live Demo: [careerportofio.netlify.app](https://careerportofio.netlify.app)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Contributions Welcome](https://img.shields.io/badge/🤝_Contributions-Welcome-blue)](CONTRIBUTING.md)
 
-A high-performance, responsive portfolio built with **Astro**, **Tailwind CSS**, and **Native Browser Animations**. Designed to be 100% data-driven and easy to customize as a reusable template.
+I’m Samith Perera, and this site is my personal portfolio for sharing projects, experience, and technical writing in one place.
+
+## Who am I
+I’m a developer focused on building clean, practical web experiences. This portfolio brings together my work, learning, and the stories behind the problems I solve.
+
+## Why I created this
+- To have a central place that shows who I am, what I build, and the value I deliver.
+- To own my content, design, and domain while keeping the site simple and easy to update.
+- To present my work in a polished, professional format that reflects my growth and direction.
 
 ## 🌟 Highlights
 - **Zero-JS by Default:** Leveraging Astro's islands architecture.
